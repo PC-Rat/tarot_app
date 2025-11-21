@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "925678177317",
+    "project_id": "insolate-s--tarot-spreads",
+    "storage_bucket": "insolate-s--tarot-spreads.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925678177317:android:51cfdff8cb9a43e3c4c3cc",
+        "android_client_info": {
+          "package_name": "Tarot.Layouts.Insolate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz5Krd8l8zCK65c_vSlfiCnUohzI4C_ro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925678177317:android:72219fa213b30172c4c3cc",
+        "android_client_info": {
+          "package_name": "com.example.tarot_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz5Krd8l8zCK65c_vSlfiCnUohzI4C_ro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
