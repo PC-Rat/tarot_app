@@ -22,22 +22,36 @@ class ApiService {
   };
 }
 
-  static Future<List<Category>> getCategories() async {
-    try {
-      final response = await http.get(
-        Uri.parse('$baseUrl/categories.php'),
-        headers: headers,
-      );
-      if (response.statusCode == 200) {
-        List<dynamic> data = json.decode(response.body);
-        return data.map((json) => Category.fromJson(json)).toList();
-      } else {
-        throw Exception('Failed to load categories: ${response.statusCode}');
-      }
-    } catch (e) {
-      throw Exception('Network error: $e');
+static Future<List<Category>> getCategories() async {
+  try {
+    print('🚀 SENDING REQUEST to: $baseUrl/categories.php');
+    print('📋 HEADERS: $headers');
+
+    final stopwatch = Stopwatch()..start();
+    final response = await http.get(
+      Uri.parse('$baseUrl/categories.php'),
+      headers: headers,
+    ).timeout(Duration(seconds: 10));
+
+    print('✅ RESPONSE TIME: ${stopwatch.elapsed}');
+    print('📡 STATUS CODE: ${response.statusCode}');
+    print('📦 RESPONSE BODY: ${response.body}');
+    print('🔍 RESPONSE HEADERS: ${response.headers}');
+
+    if (response.statusCode == 200) {
+      List<dynamic> data = json.decode(response.body);
+      print('📊 PARSED DATA: $data');
+      return data.map((json) => Category.fromJson(json)).toList();
+    } else {
+      print('❌ HTTP ERROR: ${response.statusCode}');
+      throw Exception('HTTP ${response.statusCode}');
     }
+  } catch (e, stackTrace) {
+    print('💥 FULL ERROR: $e');
+    print('🔄 STACK TRACE: $stackTrace');
+    throw Exception('Network error: $e');
   }
+}
 
   static Future<Map<String, dynamic>?> getAppInfo() async {
     try {
