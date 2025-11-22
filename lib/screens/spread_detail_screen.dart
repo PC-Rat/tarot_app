@@ -202,7 +202,7 @@ class SpreadDetailScreen extends StatelessWidget {
                     // ЗАМЕНИТЕ
                   //'https://tarot.magiclife.su${spread.imageUrl}',
                     // НА
-                    'https://91.106.207.16${spread.imageUrl}',
+                    'https://45.130.41.31${spread.imageUrl}',
                     fit: BoxFit.contain, // ← ПОКАЗЫВАЕТ ВСЮ КАРТИНКУ
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) {

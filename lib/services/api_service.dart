@@ -4,7 +4,7 @@ import '../models/category.dart';
 import '../models/spread.dart';
 
 class ApiService {
-  static const String baseUrl = 'https://91.106.207.16/api';
+  static const String baseUrl = 'https://45.130.41.31/api';
 
   static Map<String, String> get headers {
   return {
