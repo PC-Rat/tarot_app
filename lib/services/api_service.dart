@@ -4,11 +4,22 @@ import '../models/category.dart';
 import '../models/spread.dart';
 
 class ApiService {
-  static const String baseUrl = 'https://tarot.magiclife.su/api';
+  static const String baseUrl = 'https://91.106.207.16/api';
+
+  static Map<String, String> get headers {
+    return {
+      'Host': 'tarot.magiclife.su',
+      'User-Agent': 'TarotApp/1.0',
+      'Accept': 'application/json',
+    };
+  }
 
   static Future<List<Category>> getCategories() async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/categories.php'));
+      final response = await http.get(
+        Uri.parse('$baseUrl/categories.php'),
+        headers: headers,
+      );
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
         return data.map((json) => Category.fromJson(json)).toList();
@@ -20,30 +31,35 @@ class ApiService {
     }
   }
 
- static Future<Map<String, dynamic>?> getAppInfo() async {
-  try {
-    final response = await http.get(Uri.parse('$baseUrl/app_info.php'));
-    if (response.statusCode == 200) {
-      List<dynamic> data = json.decode(response.body);
-      // Найдем запись с type = 'header' или используем первую
-      final headerInfo = data.firstWhere(
-        (item) => item['type'] == 'header',
-        orElse: () => data.isNotEmpty ? data.first : {},
+  static Future<Map<String, dynamic>?> getAppInfo() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/app_info.php'),
+        headers: headers,
       );
-      return {
-        'subtitle': headerInfo['subtitle'] ?? '',
-        'announcement': headerInfo['announcement'] ?? ''
-      };
+      if (response.statusCode == 200) {
+        List<dynamic> data = json.decode(response.body);
+        final headerInfo = data.firstWhere(
+          (item) => item['type'] == 'header',
+          orElse: () => data.isNotEmpty ? data.first : {},
+        );
+        return {
+          'subtitle': headerInfo['subtitle'] ?? '',
+          'announcement': headerInfo['announcement'] ?? ''
+        };
+      }
+      return null;
+    } catch (e) {
+      return null;
     }
-    return null;
-  } catch (e) {
-    return null; // В случае ошибки вернем null
   }
-}
 
   static Future<List<Spread>> getSpreadsByCategory(String categoryId) async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/spreads.php?category=$categoryId'));
+      final response = await http.get(
+        Uri.parse('$baseUrl/spreads.php?category=$categoryId'),
+        headers: headers,
+      );
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
         return data.map((json) => Spread.fromJson(json)).toList();
@@ -57,7 +73,10 @@ class ApiService {
 
   static Future<List<Spread>> getAllSpreads() async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/spreads.php'));
+      final response = await http.get(
+        Uri.parse('$baseUrl/spreads.php'),
+        headers: headers,
+      );
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
         return data.map((json) => Spread.fromJson(json)).toList();

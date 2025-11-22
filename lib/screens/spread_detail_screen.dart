@@ -199,7 +199,10 @@ class SpreadDetailScreen extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.network(
-                    'https://tarot.magiclife.su${spread.imageUrl}',
+                    // ЗАМЕНИТЕ
+                  //'https://tarot.magiclife.su${spread.imageUrl}',
+                    // НА
+                    'https://91.106.207.16${spread.imageUrl}',
                     fit: BoxFit.contain, // ← ПОКАЗЫВАЕТ ВСЮ КАРТИНКУ
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) {
