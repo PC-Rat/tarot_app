@@ -200,7 +200,7 @@ class SpreadDetailScreen extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.network(
-                   ApiService.getImageUrl(spread.imageUrl),
+                   ApiService.getImageUrl(spread.imageUrl ?? ''),
                     fit: BoxFit.contain, // ← ПОКАЗЫВАЕТ ВСЮ КАРТИНКУ
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) {
