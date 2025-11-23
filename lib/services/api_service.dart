@@ -4,7 +4,7 @@ import '../models/category.dart';
 import '../models/spread.dart';
 
 class ApiService {
-  static const String baseUrl = 'https://45.130.41.31/api';
+  static const String baseUrl = 'https://tarot.magiclife.su/api';
 
   static Map<String, String> get headers {
   return {
@@ -31,7 +31,7 @@ static Future<List<Category>> getCategories() async {
     final response = await http.get(
       Uri.parse('$baseUrl/categories.php'),
       headers: headers,
-    ).timeout(Duration(seconds: 10));
+    ).timeout(Duration(seconds: 30));
 
     print('✅ RESPONSE TIME: ${stopwatch.elapsed}');
     print('📡 STATUS CODE: ${response.statusCode}');
