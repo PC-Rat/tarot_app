@@ -100,7 +100,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               ),
               child: spread.imageUrl != null
                   ? Image.network(
-                      '${ApiService.baseUrl}${spread.imageUrl}',
+                      '${ApiService.siteUrl}${spread.imageUrl}',
                       width: 50,
                       height: 50,
                       fit: BoxFit.cover,
@@ -293,9 +293,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               //child: Text('🔮', style: TextStyle(fontSize: 24)),
             //),
             child: Image.network(
-  '${ApiService.baseUrl}/images/categories_icon.png',
-  width: 100,
-  height: 100,
+  '${ApiService.siteUrl}/images/categories_icon.png',
+  width: 50,
+  height: 50,
 )
           ),
           title: Text(
@@ -368,7 +368,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               ? ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.network(
-                    '${ApiService.baseUrl}${spread.imageUrl}',
+                    '${ApiService.siteUrl}${spread.imageUrl}',
                     width: 40,
                     height: 40,
                     fit: BoxFit.cover,

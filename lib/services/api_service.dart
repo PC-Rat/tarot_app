@@ -5,6 +5,11 @@ import '../models/spread.dart';
 
 class ApiService {
   static const String baseUrl = 'https://tarot.magiclife.su/api';
+  static const String siteUrl = 'https://tarot.magiclife.su';
+
+  static String getImageUrl(String imagePath) {
+    return '$siteUrl$imagePath';
+  }
 
   static Map<String, String> get headers {
   return {

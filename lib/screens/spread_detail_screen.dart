@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../services/api_service.dart';
 import '../models/spread.dart';
 
 class SpreadDetailScreen extends StatelessWidget {
@@ -199,10 +200,7 @@ class SpreadDetailScreen extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.network(
-                    // ЗАМЕНИТЕ
-                  //'https://tarot.magiclife.su${spread.imageUrl}',
-                    // НА
-                    'https://45.130.41.31${spread.imageUrl}',
+                   ApiService.getImageUrl(spread.imageUrl),
                     fit: BoxFit.contain, // ← ПОКАЗЫВАЕТ ВСЮ КАРТИНКУ
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) {
