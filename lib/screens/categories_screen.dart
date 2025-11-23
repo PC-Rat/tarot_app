@@ -44,8 +44,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
 
   void _loadAllSpreads() async {
     try {
-      //final response = await http.get(Uri.parse('https://tarot.magiclife.su/api/spreads.php'));
-      final response = await http.get(Uri.parse('https://45.130.41.31/api/spreads.php'));
+     final response = await http.get(Uri.parse('${ApiService.baseUrl}/spreads.php'));
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
         setState(() {
@@ -101,7 +100,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               ),
               child: spread.imageUrl != null
                   ? Image.network(
-                      'https://45.130.41.31${spread.imageUrl}',
+                      '${ApiService.baseUrl}${spread.imageUrl}',
                       width: 50,
                       height: 50,
                       fit: BoxFit.cover,
@@ -294,7 +293,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               //child: Text('🔮', style: TextStyle(fontSize: 24)),
             //),
             child: Image.network(
-  'https://45.130.41.31/images/categories_icon.png',
+  '${ApiService.baseUrl}/images/categories_icon.png',
   width: 100,
   height: 100,
 )
@@ -369,7 +368,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               ? ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.network(
-                    'https://45.130.41.31${spread.imageUrl}',
+                    '${ApiService.baseUrl}${spread.imageUrl}',
                     width: 40,
                     height: 40,
                     fit: BoxFit.cover,
